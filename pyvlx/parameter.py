@@ -7,6 +7,7 @@ class Parameter():
 
     UNKNOWN_VALUE = 63487  # F7 FF
     CURRENT_POSITION = 53760  # D2 00
+    IGNORE = 54272 # D4 00
     MAX = 51200  # C8 00
     MIN = 0  # 00 00
     ON = 0  # 00 00
@@ -15,7 +16,7 @@ class Parameter():
     def __init__(self, raw=None):
         """Initialize Parameter class."""
         self.raw = self.from_int(Position.UNKNOWN_VALUE)
-        if raw is not None:
+        if raw is not None and raw != Position.IGNORE:
             self.raw = self.from_raw(raw)
 
     def from_parameter(self, parameter):
